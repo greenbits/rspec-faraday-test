@@ -2,7 +2,7 @@
 An RSpec Faraday API integration test coding challenge targeting the [Dog API](http://dog.ceo/dog-api/).
 
 ### Dependencies:
-* A recent (think 2.3+) version of Ruby with Bundler installed (`gem install bundler`).
+* Ruby 2.2.8 with Bundler installed (`gem install bundler`).
 
 ### Installation:
 ```
