@@ -1,6 +1,7 @@
 describe 'https://dog.ceo/api' do
-  before(:all) do
-    @conn = Faraday.new(url: 'https://dog.ceo/api') do |faraday|
+  let!(:base_url) { 'https://dog.ceo/api' }
+  let!(:connection) do
+    Faraday.new(url: base_url) do |faraday|
       faraday.request :json
       faraday.response :json, content_type: /\bjson$/
       faraday.adapter Faraday.default_adapter
@@ -8,13 +9,11 @@ describe 'https://dog.ceo/api' do
   end
 
   context '/breeds/list/all' do
-    before(:all) do
-      endpoint = 'breeds/list/all'
-      @response = @conn.get endpoint
-    end
+    let!(:endpoint) { 'breeds/list/all' }
+    let!(:response) { connection.get endpoint }
 
     it 'responds with a 200 Success' do
-      expect(@response.status).to eq 200
+      expect(response.status).to eq 200
     end
   end
 end
